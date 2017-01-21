@@ -1,0 +1,11 @@
+{
+  "name": "bluestreak",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "corbin fonville",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2"
+  }
+}
