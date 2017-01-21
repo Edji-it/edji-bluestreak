@@ -1,4 +1,3 @@
-
 module.exports = function(server) {
     var io = require('socket.io')(server)
     function getAllRoomMembers(room, _nsp) {
@@ -17,6 +16,7 @@ module.exports = function(server) {
     //wires socket.io for sessions
     var sessionObjs = {}
     io.on('connection', function(socket) {
+        console.log("socket connected")
         var thisSessionId
         var thisUserId
 
