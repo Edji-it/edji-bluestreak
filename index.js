@@ -1,6 +1,6 @@
 var express = require('express')()
 var server = require('http').Server(express)
-require("./Sockets.js")(server)
+require("./Sockets.js")(server, { pingInterval: 15000, pingTimeout: 50000 })
 
 var PORT = process.env.PORT || 7899
 
