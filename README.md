@@ -23,3 +23,23 @@ HTTPS: `https://github.com/codiak/edji-bluestreak.git`
 ```bash
 yarn install
 ```
+
+## Heroku
+
+Add remotes
+```bash
+git remote add prod https://git.heroku.com/bluestreak.git
+git remote add dev https://git.heroku.com/bluestreak-dev.git
+```
+
+Push to `dev` and `prod`
+```bash
+git push prod master
+git push dev master
+```
+
+Swap the default Heroku CLI remote
+```bash
+git config heroku.remote dev
+git config heroku.remote prod
+```
