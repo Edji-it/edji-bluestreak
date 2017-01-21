@@ -1,6 +1,10 @@
 {
   "name": "bluestreak",
   "version": "1.0.0",
+  "description": "Node socket server for Edji",
+  "scripts": {
+    "start": "node index.js"
+  },
   "main": "index.js",
   "author": "corbin fonville",
   "license": "MIT",
