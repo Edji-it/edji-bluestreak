@@ -1,12 +1,10 @@
-var express = require('express')
-var app = express()
+var express = require('express')()
+var server = require('http').Server(express)
+require("./Sockets.js")(server)
 
 var PORT = process.env.PORT || 7899
 
-var server = require('http').createServer(app)
-require("./Sockets.js")(server)
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("bluestreak listening at port " + PORT)
 })
-app.timeout = 2000
+server.timeout = 2000
