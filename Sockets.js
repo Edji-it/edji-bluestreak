@@ -2,7 +2,7 @@ module.exports = function(server) {
     var io = require('socket.io')(server)
 
     /** Returns an array of all sockets in a room */
-    function getAllRoomMembers(room, _nsp) {
+    function getAllRoomMembers(room) {
         var roomMembers = []
         
         // Make an array of sockets in room
@@ -11,8 +11,16 @@ module.exports = function(server) {
                 roomMembers.push(io.sockets.connected[socketId]) // pushes the socket object into an array
             }
         }
-
         return roomMembers
+    }
+
+    /** returns an array of users who are currently active on the project */
+    function getActiveUsers(room) {
+        var activeUsers = []
+        getAllRoomMembers(room).forEach((socket) => {
+            activeUsers.push({ userId: socket.user_id })
+        })
+        return activeUsers
     }
 
     //wires socket.io for sessions
@@ -32,17 +40,17 @@ module.exports = function(server) {
             socket.user_id = session.user // reset socket's id in case it has changed
             // Join rooms based on Session ID
             socket.join(thisSessionId, function() {
-                io.to(thisSessionId).emit('liveUsers', getAllRoomMembers(thisSessionId).length)
+                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
             })
         })
 
         socket.on('disconnect', function() {
-            io.to(thisSessionId).emit('liveUsers', getAllRoomMembers(thisSessionId).length)
+            io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
         })
 
         socket.on('manualDisconnect', function(session) {
             socket.leave(session.id, function() {
-                io.to(thisSessionId).emit('liveUsers', getAllRoomMembers(thisSessionId).length)
+                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
             })
         })
 
