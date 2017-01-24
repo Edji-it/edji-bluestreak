@@ -1,12 +1,14 @@
 module.exports = function(server) {
     var io = require('socket.io')(server)
+
+    /** Returns an array of all sockets in a room */
     function getAllRoomMembers(room, _nsp) {
         var roomMembers = []
         
         // Make an array of sockets in room
         if (io.nsps['/'].adapter.rooms[room]) {
-            for( var member in io.nsps['/'].adapter.rooms[room].sockets ) {
-                roomMembers.push(member)
+            for( var socketId in io.nsps['/'].adapter.rooms[room].sockets ) {
+                roomMembers.push(io.sockets.connected[socketId]) // pushes the socket object into an array
             }
         }
 
@@ -20,14 +22,18 @@ module.exports = function(server) {
         var thisSessionId
         var thisUserId
 
-        socket.on('newSession', function(session) {
+        /** Associate a user's id with the socket */
+        socket.on('resUserId', (id) => { socket.user_id = id })
+        socket.emit('getUserId')
+
+        /** Occurs when a user first opens a project */
+        socket.on('openProject', function(session) {
             thisSessionId = session.id
-            thisUserId = session.user
+            socket.user_id = session.user // reset socket's id in case it has changed
             // Join rooms based on Session ID
             socket.join(thisSessionId, function() {
                 io.to(thisSessionId).emit('liveUsers', getAllRoomMembers(thisSessionId).length)
             })
-            
         })
 
         socket.on('disconnect', function() {
@@ -40,15 +46,15 @@ module.exports = function(server) {
             })
         })
 
-        // Deprecated
-        socket.on('deleteComment', function(comment) {
-            io.to(thisSessionId).emit('deleteComment', comment)
-        })
+        // // Deprecated
+        // socket.on('deleteComment', function(comment) {
+        //     io.to(thisSessionId).emit('deleteComment', comment)
+        // })
 
-        // Deprecated
-        socket.on('addComment', function(comment) {
-            io.to(thisSessionId).emit('addComment', comment)
-        })
+        // // Deprecated
+        // socket.on('addComment', function(comment) {
+        //     io.to(thisSessionId).emit('addComment', comment)
+        // })
 
         // Support ADD, DELETE, or UPDATE
         // @param commentUpdate: any { comment: commentObj, action: 'ADD', projectId: PROJECTID }
