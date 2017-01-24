@@ -40,17 +40,17 @@ module.exports = function(server) {
             socket.user_id = session.user // reset socket's id in case it has changed
             // Join rooms based on Session ID
             socket.join(thisSessionId, function() {
-                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
+                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
             })
         })
 
         socket.on('disconnect', function() {
-            io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
+            io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
         })
 
         socket.on('manualDisconnect', function(session) {
             socket.leave(session.id, function() {
-                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId).length)
+                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
             })
         })
 
