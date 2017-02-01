@@ -54,15 +54,9 @@ module.exports = function(server) {
             })
         })
 
-        // // Deprecated
-        // socket.on('deleteComment', function(comment) {
-        //     io.to(thisSessionId).emit('deleteComment', comment)
-        // })
-
-        // // Deprecated
-        // socket.on('addComment', function(comment) {
-        //     io.to(thisSessionId).emit('addComment', comment)
-        // })
+        socket.on('heatMode', (value) => {
+            io.to(thisSessionId.emit('heatMode', value))
+        })
 
         // Support ADD, DELETE, or UPDATE
         // @param commentUpdate: any { comment: commentObj, action: 'ADD', projectId: PROJECTID }
