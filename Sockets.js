@@ -54,8 +54,8 @@ module.exports = function(server) {
             })
         })
 
-        socket.on('heatMode', (value) => {
-            io.to(thisSessionId.emit('heatMode', value))
+        socket.on('heatVision', (value) => {
+            io.to(thisSessionId.emit('heatVision', value))
         })
 
         // Support ADD, DELETE, or UPDATE
