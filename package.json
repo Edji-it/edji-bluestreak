@@ -1,6 +1,6 @@
 {
   "name": "bluestreak",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Node socket server for Edji",
   "scripts": {
     "start": "node index.js"
