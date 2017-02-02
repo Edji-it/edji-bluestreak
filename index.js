@@ -42,3 +42,4 @@ server.listen(PORT, () => {
 })
 server.timeout = 2000
 
+module.exports = server
