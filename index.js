@@ -1,11 +1,11 @@
 var express = require('express')
-require("./Sockets.js")(server, { pingInterval: 15000, pingTimeout: 50000 })
 
 var PORT = process.env.PORT || 7899
 
 var app = express()
 
 var server = require('http').createServer(app)
+require("./Sockets.js")(server, { pingInterval: 15000, pingTimeout: 50000 })
 
 // Access allowed for development
 app.use(function (req, res, next) {
