@@ -54,8 +54,8 @@ module.exports = function(server) {
             })
         })
 
-        socket.on('heatVision', (value) => {
-            io.to(thisSessionId.emit('heatVision', value))
+        socket.on('heatVision', (projectPowers) => {
+            io.to(projectPowers.projectId).emit('heatVision', value)
         })
 
         // Support ADD, DELETE, or UPDATE
