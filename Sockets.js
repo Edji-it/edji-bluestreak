@@ -48,14 +48,8 @@ module.exports = function(server) {
             io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
         })
 
-        socket.on('manualDisconnect', function(session) {
-            socket.leave(session.id, function() {
-                io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
-            })
-        })
-
         socket.on('heatVision', (projectPowers) => {
-            io.to(projectPowers.projectId).emit('heatVision', projectPowers)
+            io.to(thisSessionId).emit('heatVision', projectPowers)
         })
 
         // Support ADD, DELETE, or UPDATE
