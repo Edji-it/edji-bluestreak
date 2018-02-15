@@ -9,7 +9,9 @@
   "author": "corbin fonville",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.14.0",
+    "response-time": "^2.3.2",
     "socket.io": "^1.7.2"
   }
 }
