@@ -9,11 +9,12 @@
   "author": "corbin fonville",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.196.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "express": "^4.14.0",
     "joi": "^13.1.2",
-    "nodemailer-ses-transport": "^1.5.1",
+    "nodemailer": "^4.4.2",
     "nodemon": "^1.15.0",
     "response-time": "^2.3.2",
     "socket.io": "^1.7.2"

@@ -1,8 +1,8 @@
 const joi = require('joi')
 
 const awsSchema = joi.object({
-  SES_KEY_ID: joi.string().required(),
-  SES_SECRET_KEY: joi.string().required()
+  AWS_ACCESS_KEY_ID: joi.string().required(),
+  AWS_SECRET_ACCESS_KEY: joi.string().required()
 })
 
 const { error, value: awsVars } = awsSchema.validate(process.env, { allowUnknown: true })

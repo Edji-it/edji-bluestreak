@@ -114,7 +114,7 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
-aws-sdk@^2.2.36:
+aws-sdk@^2.196.0:
   version "2.196.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.196.0.tgz#0fabf9b1d22997c59d77a025c6bd4666924f147c"
   dependencies:
@@ -1448,11 +1448,9 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-nodemailer-ses-transport@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/nodemailer-ses-transport/-/nodemailer-ses-transport-1.5.1.tgz#dc0598c1bf53e8652e632e8f31692ce022d7dea9"
-  dependencies:
-    aws-sdk "^2.2.36"
+nodemailer@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.4.2.tgz#f215fb88e8a1052f9f93083909e116d2b79fc8de"
 
 nodemon@^1.15.0:
   version "1.15.0"
