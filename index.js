@@ -8,10 +8,16 @@ app.use(responseTime())
 app.use(bodyParser.json({limit: '20mb'}))
 
 // import routes
-const emails = require('./emails')
+const routes = require('./routes')
+
+// add middleware
+app.use((req, res, next) => {
+  console.log('heading to ' + req.path)
+  next()
+})
 
 // add routes to express
-app.use(emails)
+app.use(routes)
 
 // set up socket server
 const server = require('http').Server(app)

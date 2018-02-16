@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Node socket server for Edji",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "main": "index.js",
   "author": "corbin fonville",
@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.14.0",
+    "nodemon": "^1.15.0",
     "response-time": "^2.3.2",
     "socket.io": "^1.7.2"
   }
