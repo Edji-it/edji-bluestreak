@@ -8,7 +8,7 @@ const envSchema = joi.object({
     .required()
 })
 
-const { error, value: envVars } = joi.validate(process.env, envSchema)
+const { error, value: envVars } = envSchema.validate(process.env, { allowUnknown: true })
 if (error) {
   throw new Error(`Config validation error: ${error.message}`)
 }

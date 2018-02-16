@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const responseTime = require('response-time') // middleware that adds header with the total elapsed time of call
+const dotenv = require('dotenv').config()
+const CONFIG = require('./config')
 
 // configure express
 let app = express()
@@ -18,7 +20,7 @@ const server = require('http').Server(app)
 require("./Sockets.js")(server, { pingInterval: 15000, pingTimeout: 50000 })
 
 // set port to listen on
-const PORT = process.env.PORT || 7899
+const PORT = process.env.PORT
 
 // start the server
 server.listen(PORT, () => {

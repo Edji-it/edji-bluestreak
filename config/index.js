@@ -1,10 +1,10 @@
 const env = require('./env')
 const aws = require('./aws')
 
-const config = Object.assign(
+const CONFIG = Object.assign(
   {},
   env,
   aws
 )
 
-module.exports = config
+module.exports = CONFIG
