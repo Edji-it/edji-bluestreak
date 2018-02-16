@@ -17,5 +17,8 @@
     "nodemon": "^1.15.0",
     "response-time": "^2.3.2",
     "socket.io": "^1.7.2"
+  },
+  "engines": {
+    "node": "^8.9.4"
   }
 }
