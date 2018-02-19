@@ -1,4 +1,5 @@
 const mailer = require('./../../../aws').mailer
+const pug = require('pug')
 
 module.exports = function(req, res) {
 
