@@ -3,7 +3,8 @@
   "version": "1.0.2",
   "description": "Node socket server for Edji",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha 'routes/**/*.spec.js'"
   },
   "main": "index.js",
   "author": "corbin fonville",
