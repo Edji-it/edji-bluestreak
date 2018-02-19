@@ -3,17 +3,12 @@ const mailer = require('./../../../aws').mailer
 module.exports = function(req, res) {
 
   mailer.sendMail({
-    from: 'corbin@edji.it',
-    to: 'cody@edji.it',
+    from: 'brennen@edji.it',
+    to: 'corbin@edji.it',
     subject: 'From AWS!',
-    text: 'I hope this message gets sent!',
-    ses: { // optional extra arguments for SendRawEmail
-        Tags: [{
-            Name: 'what-is-this',
-            Value: 'well-its-something'
-        }]
-    }
+    text: 'I hope this message gets sent!'
   }, (err, info) => {
+    console.log(info)
     if (err) {
       res.status(500).send({ error: err })
     } else {
