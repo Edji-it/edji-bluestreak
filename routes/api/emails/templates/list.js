@@ -1,5 +1,5 @@
 // constants
-const TEMPLATE_NAMES = require('./_templates')
+const TEMPLATE_NAMES = require('./_templates').names
 
 /**
  * Goes through all available templates in the /templates/rsc folder and returns a list of templates
