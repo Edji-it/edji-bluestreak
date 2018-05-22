@@ -1,11 +1,10 @@
-const mailer = require('./../../../aws').mailer
-const pug = require('pug')
+const mailer = require('./../../../../aws').mailer
 
 module.exports = function(req, res) {
 
   mailer.sendMail({
     from: 'brennen@edji.it',
-    to: 'corbin@edji.it',
+    to: 'josh@edji.it',
     subject: 'From AWS!',
     text: 'I hope this message gets sent!'
   }, (err, info) => {

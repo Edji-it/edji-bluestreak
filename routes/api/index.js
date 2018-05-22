@@ -2,9 +2,9 @@
 const router = require('express').Router()
 
 // import route handlers
-const emails = require('./emails')
+const v1 = require('./v1')
 
 // add handlers to router
-router.use('/emails', emails)
+router.use('/v1', v1)
 
 module.exports = router
