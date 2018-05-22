@@ -6,10 +6,25 @@ const pug = require('pug')
 const TEMPLATE_DIR = __dirname + '/rsc'
 
 /**
- * Reads the ./rsc directory and returns results
+ * Reads the ./rsc directory and returns names of the files
  * @param {function} callback (err, templates) function to which results are passed
  */
 const getTemplateNames = function() {
+  let pugTemplates = []
+
+  fs.readdirSync(TEMPLATE_DIR).forEach((file) => {
+    if (file.substr(file.length - 4, 4) == '.pug') {
+      pugTemplates.push(file.substr(0,file.length-4))
+    }
+  })
+  return pugTemplates
+}
+
+/**
+ * Reads the ./rsc directory and returns full filenames with extension
+ * @param {function} callback (err, templates) function to which results are passed
+ */
+const getTemplateFiles = function() {
   let pugTemplates = []
 
   fs.readdirSync(TEMPLATE_DIR).forEach((file) => {
@@ -34,7 +49,8 @@ const getTemplateCompilers = function(names) {
 }
 
 const TEMPLATE_NAMES = getTemplateNames()
-const TEMPLATE_COMPILERS = getTemplateCompilers(TEMPLATE_NAMES)
+const TEMPLATE_FILES = getTemplateFiles()
+const TEMPLATE_COMPILERS = getTemplateCompilers(TEMPLATE_FILES)
 
 module.exports = {
   names: TEMPLATE_NAMES,
