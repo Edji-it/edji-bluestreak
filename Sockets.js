@@ -55,6 +55,8 @@ module.exports = function(server) {
         // Support ADD, DELETE, or UPDATE
         // @param commentUpdate: any { comment: commentObj, action: 'ADD', projectId: PROJECTID }
         socket.on('updateComment', function(commentUpdate) {
+            if (commentUpdate && commentUpdate.comment) { console.log(commentUpdate.comment.author + " said " + commentUpdate.comment.data) }
+            else { console.log("got blank comment") }
             io.to(commentUpdate.projectId).emit('updateComment', commentUpdate)
         })
     })
