@@ -26,18 +26,15 @@ TEMPLATE_NAMES.forEach(((template) => {
       let template_text_promise = require('./templates/_templates').GET(template + '.pug', {"name": recipient.name})
 
       template_text_promise.then((template_text) => {
-        console.log(template_text)
         // make sure the email address is valid before we try to send it out
         if (validateEmail(recipient.email)) {
           // send an email out if validation checks out
-          // HINT: need validation here
           mailer.sendMail({
             from: vars.from,
             to: recipient.email,
             subject: vars.subject,
             html: template_text
           }, (err, info) => {
-            console.log(info)
             if (err) {
               res.status(500).send({ error: err })
             } else {
