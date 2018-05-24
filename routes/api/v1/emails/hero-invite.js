@@ -1,5 +1,6 @@
 // construct router
 const router = require('express').Router()
+const Q = require('q')
 
 // the mailer
 const mailer = require('./../../../../aws').mailer
@@ -15,8 +16,14 @@ let validateEmail = function(email) {
 }
 
 // send an email from the template specified in the route
-TEMPLATE_NAMES.forEach(((template) => {
-  router.post("/" + template, function(req, res) {
+
+TEMPLATE_NAMES.forEach((template) => {
+  var errorArr = []
+  var successArr = []
+  var deferred = Q.defer()
+  var promises = []
+
+  router.post("/" + template, (req, res) => {
     // pull in the request body info
     let vars = req.body.vars
 
@@ -29,25 +36,44 @@ TEMPLATE_NAMES.forEach(((template) => {
         // make sure the email address is valid before we try to send it out
         if (validateEmail(recipient.email)) {
           // send an email out if validation checks out
-          mailer.sendMail({
+          var promise = mailer.sendMail({
             from: vars.from,
             to: recipient.email,
             subject: vars.subject,
             html: template_text
-          }, (err, info) => {
+          }, (err, success) => {
             if (err) {
-              res.status(500).send({ error: err })
+              // errorArr.push(err)
+              // deferred.reject(err)
             } else {
-              res.status(200).send({ info: info })
+              // successArr.push(succes)
+              // deferred.resolve(success)
             }
           })
+          promises.push(promise)
         }
       }, (err) => {
         console.log(err)
       })
     })
+    
+    Q.all(promises)
+      .then((promises) => {
+        deferred.resolve(promises)
+        console.log(promises) // This always returns -> []
+      })
+      .catch((err) => {
+        deferred.reject(err)
+      });
+
+    return deferred.promise
+    // if we have any success, let's compile and send them
+    // if (successArr.length > -1) {
+    //   console.log(successArr.length)
+    //   res.status(200).send({ info: (successArr.length + 1) + " successful emails sent using the " + template + " template" })
+    // }
   })
-}))
+})
 
 // test route that returns all template names
 router.get("/", listHandler)
