@@ -42,8 +42,11 @@ const getTemplateFiles = function() {
  */
 const getTemplateCompilers = function(names) {
   let compilers = {}
+  let options = {
+    "doctype": "html"
+  }
   names.forEach((name) => {
-    compilers[name] = pug.compileFile(TEMPLATE_DIR + '/' + name)
+    compilers[name] = pug.compileFile(TEMPLATE_DIR + '/' + name, options)
   })
   return compilers
 }
