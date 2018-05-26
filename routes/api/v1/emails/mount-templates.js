@@ -2,6 +2,9 @@
 const router = require('express').Router()
 const Q = require('q')
 
+// authorization token checker
+const authRequired = require('./../../../../middleware/auth-required')
+
 // the mailer
 const mailer = require('./../../../../aws').mailer
 
@@ -44,7 +47,7 @@ function sendEmail(from, to, subject, html) {
 // set up all routes from all available templates
 TEMPLATE_NAMES.forEach((template) => {
   // send an email from the template specified in the route
-  router.post("/" + template, (req, res) => {
+  router.post("/" + template, authRequired, (req, res) => {
     var promises = []
     // pull in the request body info
     let email_details = req.body
