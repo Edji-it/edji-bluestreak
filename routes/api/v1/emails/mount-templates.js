@@ -44,8 +44,8 @@ TEMPLATE_NAMES.forEach((template) => {
           error_count+=1
         }
       })
-      if (error_count == results_count) { 
-        throw results
+      if (error_count == results_count) {
+        throw error
       }
       res.status(200).send({ results: results })
     })

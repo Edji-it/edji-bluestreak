@@ -9,10 +9,10 @@ const validateEmail = function(email) {
 
 /**
  * sends an email using AWS SES through nodemailer
- * @param {from} where is the email coming from (sender)
- * @param {to} where are the emails going (recipients)
- * @param {subject} subject line
- * @param {html} content of the email, from one of our templates
+ * @param {string} frome where is the email coming from (sender)
+ * @param {string} to where are the emails going (recipients)
+ * @param {string} subject subject line
+ * @param {string} html content of the email, from one of our templates
  * NOTE: according to AWS' documentation, the max recipient number is 50, so watch this
  */
 const sendEmail = function(from, to, subject, html) {
