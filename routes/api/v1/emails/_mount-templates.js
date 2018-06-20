@@ -24,7 +24,7 @@ const sendEmail = function(from, to, subject, html) {
       html: html
     }, (err, success) => {
       if (err) {
-        console.log(err)
+        console.error(err)
         return resolve({"error": err})
       } else {
         return resolve({"success": success})
