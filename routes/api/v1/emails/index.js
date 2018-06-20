@@ -3,10 +3,10 @@ const router = require('express').Router()
 
 // import route handlers
 const templatesRouter = require('./templates')
-const postHandler = require('./post')
+const sendEmailFromTemplate = require('./mount-templates')
 
 // attach handlers to router
 router.use('/templates', templatesRouter)
-router.post('/', postHandler)
+router.use('/sendmail', sendEmailFromTemplate)
 
 module.exports = router
