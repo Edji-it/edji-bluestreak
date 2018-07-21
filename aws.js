@@ -9,5 +9,5 @@ const mailer = nodemailer.createTransport({
 })
 
 module.exports = {
-  mailer: mailer
+  mailer
 }

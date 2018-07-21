@@ -16,10 +16,12 @@ TEMPLATE_NAMES.forEach((template) => {
     // pull in the request body info
     let email_details = req.body
 
+    if (!email_details.recipients) { return res.status(400).send({ error: 'no recipients included with request' }) }
+
     // send an email for each recipient
     email_details.recipients.forEach((recipient) => {
       // get and setup the template file for each recipient
-      let template_text_promise = templateGetter(template + '.pug', {"values": recipient})
+      let template_text_promise = templateGetter(template + '.pug', { "values": recipient })
       .then((template_text) => {
           // make sure the email address is valid before we try to send it out
           if (helpers.validateEmail(recipient.email)) {
@@ -28,6 +30,9 @@ TEMPLATE_NAMES.forEach((template) => {
           } else {
             return {"error": {"MessageRejected": "invalid email address for " + recipient.email}}
           }
+      })
+      .catch((err) => {
+        return res.status(500).send({ error: 'error occurred during template' })
       })
       promises.push(template_text_promise)
     })

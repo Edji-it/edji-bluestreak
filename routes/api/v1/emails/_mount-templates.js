@@ -9,7 +9,7 @@ const validateEmail = function(email) {
 
 /**
  * sends an email using AWS SES through nodemailer
- * @param {string} frome where is the email coming from (sender)
+ * @param {string} from where is the email coming from (sender)
  * @param {string} to where are the emails going (recipients)
  * @param {string} subject subject line
  * @param {string} html content of the email, from one of our templates
