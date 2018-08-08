@@ -38,8 +38,12 @@ TEMPLATE_NAMES.forEach((template) => {
                 contentType: recipient.vars.attachment_type
               }]
             }
+            // check if the vars object has a replyTo so we can give the person receiving email the option to reply back to an address
+            if (recipient.vars.hasOwnProperty('replyTo')) {
+              replyTo = recipient.vars.replyTo
+            }
             // send an email out if validation checks out
-            return helpers.sendEmail(email_details.from, recipient.email, email_details.subject, template_text, attachments)
+            return helpers.sendEmail(email_details.from, recipient.email, email_details.subject, template_text, attachments, replyTo)
           } else {
             return {"error": {"MessageRejected": "invalid email address for " + recipient.email}}
           }
