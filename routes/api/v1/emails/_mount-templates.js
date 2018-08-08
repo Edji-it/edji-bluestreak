@@ -29,7 +29,7 @@ const sendEmail = function(from, to, subject, html, attachments, replyTo) {
       mailOptions.attachments = attachments
     }
     // if a replyTo is specified, let's add that to the mailOptions as well
-    if (replyTo && replyTo.legnth>0) {
+    if (replyTo && replyTo.length>0) {
       mailOptions.replyTo = replyTo
     }
     // send the email
