@@ -25,8 +25,25 @@ TEMPLATE_NAMES.forEach((template) => {
       .then((template_text) => {
           // make sure the email address is valid before we try to send it out
           if (helpers.validateEmail(recipient.email)) {
+            let attachments = []
+            /**
+             * to add an attachment, add property attachment to the vars object and include:
+             * @param attachment_name which is the name of the document being attached
+             * @param attachment_type which is the typer of document being attached
+             */
+            if (recipient.vars.hasOwnProperty('attachment')) {
+              attachments = [{
+                filename: recipient.vars.attachment_name,
+                path: recipient.vars.attachment,
+                contentType: recipient.vars.attachment_type
+              }]
+            }
+            // check if the vars object has a replyTo so we can give the person receiving email the option to reply back to an address
+            if (recipient.vars.hasOwnProperty('replyTo')) {
+              replyTo = recipient.vars.replyTo
+            }
             // send an email out if validation checks out
-            return helpers.sendEmail(email_details.from, recipient.email, email_details.subject, template_text)
+            return helpers.sendEmail(email_details.from, recipient.email, email_details.subject, template_text, attachments, replyTo)
           } else {
             return {"error": {"MessageRejected": "invalid email address for " + recipient.email}}
           }

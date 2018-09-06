@@ -15,14 +15,25 @@ const validateEmail = function(email) {
  * @param {string} html content of the email, from one of our templates
  * NOTE: according to AWS' documentation, the max recipient number is 50, so watch this
  */
-const sendEmail = function(from, to, subject, html) {
+const sendEmail = function(from, to, subject, html, attachments, replyTo) {
   return new Promise((resolve, reject) => {
-    mailer.sendMail({
+    // email options that we setup from passed-in properties
+    let mailOptions = {
       from: from,
       to: to,
       subject: subject,
       html: html
-    }, (err, success) => {
+    }
+    // if attachments are there, let's set them up properly
+    if (attachments && attachments.length>0) {
+      mailOptions.attachments = attachments
+    }
+    // if a replyTo is specified, let's add that to the mailOptions as well
+    if (replyTo && replyTo.length>0) {
+      mailOptions.replyTo = replyTo
+    }
+    // send the email
+    mailer.sendMail(mailOptions, (err, success) => {
       if (err) {
         console.error(err)
         return resolve({"error": err})
