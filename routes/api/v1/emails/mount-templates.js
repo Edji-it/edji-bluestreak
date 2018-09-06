@@ -49,7 +49,10 @@ TEMPLATE_NAMES.forEach((template) => {
           }
       })
       .catch((err) => {
-        return res.status(500).send({ error: 'error occurred during template' })
+        return res.status(500).send({ 
+          message: 'error occurred during template',
+          error: err
+      })
       })
       promises.push(template_text_promise)
     })
