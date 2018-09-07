@@ -26,6 +26,7 @@ TEMPLATE_NAMES.forEach((template) => {
           // make sure the email address is valid before we try to send it out
           if (helpers.validateEmail(recipient.email)) {
             let attachments = []
+            let replyTo = ''
             /**
              * to add an attachment, add property attachment to the vars object and include:
              * @param attachment_name which is the name of the document being attached
