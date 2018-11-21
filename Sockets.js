@@ -52,8 +52,18 @@ module.exports = function(server) {
             io.to(thisSessionId).emit('heatVision', projectPowers)
         })
 
-        // Support ADD, DELETE, or UPDATE
-        // @param commentUpdate: any { comment: commentObj, action: 'ADD', projectId: PROJECTID }
+        /** Handle generic Group Update events
+         * - Used for leaderboard updates
+         * - TO BE used for Heat Vision updates
+         * @param groupUpdate: any, eg. { type: "leaderboard", students: [...] }
+         */
+        socket.on('groupUpdate', (groupUpdate) => {
+            io.to(thisSessionId).emit('groupUpdate', groupUpdate)
+        })
+
+        /** Support ADD, DELETE, or UPDATE
+         * @param commentUpdate: any { comment: commentObj, action: 'ADD', projectId: PROJECTID }
+         */
         socket.on('updateComment', function(commentUpdate) {
             if (commentUpdate && commentUpdate.comment) { console.log(commentUpdate.comment.author + " said " + commentUpdate.comment.data) }
             else { console.log("got blank comment") }
