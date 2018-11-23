@@ -10,6 +10,7 @@
   "author": "corbin fonville",
   "license": "MIT",
   "dependencies": {
+    "@sentry/node": "4.3.4",
     "aws-sdk": "^2.196.0",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
@@ -17,6 +18,7 @@
     "express": "^4.14.0",
     "joi": "^13.1.2",
     "mailchimp-api-v3": "^1.8.0",
+    "method-override": "^3.0.0",
     "nodemailer": "^4.4.2",
     "nodemon": "^1.15.0",
     "pug": "^2.0.0-rc.4",
