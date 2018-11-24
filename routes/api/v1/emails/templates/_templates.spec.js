@@ -43,7 +43,7 @@ describe('_templates', () => {
       promise.should.be.instanceOf(Promise)
     })
     it('should resolve with html when template exists', (done) => {
-      templates.GET('test.pug', { name: 'Corbin' })
+      templates.GET('test.pug', {values: { name: 'Corbin' }})
         .then((html) => {
           html.should.be.a('string')
           html.length.should.be.above(0)
