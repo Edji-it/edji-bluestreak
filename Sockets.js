@@ -28,16 +28,10 @@ module.exports = function(server) {
     io.on('connection', function(socket) {
         console.log("socket connected")
         var thisSessionId
-        var thisUserId
-
-        /** Associate a user's id with the socket */
-        socket.on('resUserId', (id) => { socket.user_id = id })
-        socket.emit('getUserId')
 
         /** Occurs when a user first opens a project */
         socket.on('openProject', function(session) {
             thisSessionId = session.id
-            socket.user_id = session.user // reset socket's id in case it has changed
             // Join rooms based on Session ID
             socket.join(thisSessionId, function() {
                 io.to(thisSessionId).emit('liveUsers', getActiveUsers(thisSessionId))
