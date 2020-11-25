@@ -2,7 +2,7 @@
 const mailer = require('./../../../../aws').mailer
 
 // tests email against regex
-let emailRe = /^\w+([\.-]?\w+)*(\+[a-z0-9-]+)?@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+let emailRe = /^\w+([\.-]?\w+)*(\+[a-z0-9-]+)?@\w+([\.-]?\w+)*(\.\w{2,16})+$/
 const validateEmail = function(email) {
   return emailRe.test(email)
 }
