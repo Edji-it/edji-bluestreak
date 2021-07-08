@@ -1,0 +1,217 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    font-size: 16px;
+}
+
+.project-title {
+    display: inline-block !important;
+    color: #333;
+    text-align: left;
+}
+
+@media only screen and (min-width: 1370px) {
+    .outer-box {
+        box-shadow: 3px 3px 4px black;
+    }
+}
+
+.activity-title {
+    color: #333;
+    width: 100%;
+    border-bottom: 2px solid #dce3ea;
+}
+.activity-title:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.activity-box {
+    border: 1px solid #dce3ea;
+    color: #000;
+    font-size: 0.8em;
+    margin: 0 auto;
+    margin-bottom: 40px !important;
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: 1px 1px 10px 5px #fccb80;
+}
+.activity-box .reply-text {
+    margin: 0;
+    line-height: 28px;
+    color: #777;
+    font-style: italic;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.activity-box hr {
+    border: 1px dashed #cdcdcd !important;
+    margin: 0.1em 0;
+    margin-bottom: 0px;
+    margin-top: -1px;
+}
+.activity-box .show-more-btn {
+    width: 70%;
+    margin: 10px 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.activity-box .activity-hover .comment-header {
+    float: none;
+    text-align: left;
+    margin-left: 45px;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+.no-margin {
+    margin: 0 !important;
+}
+.activity-box .activity-hover .comment-header p {
+    margin: 0;
+}
+.activity-box .activity-hover .comment-header p:first-child {
+    font-size: 1.2em !important;
+}
+.activity-box .activity-hover .highlighted-box {
+    margin: 1em 0;
+    padding: 1em;
+    background-color: #FCEE80;
+    border-radius: 10px;
+    font-style: italic;
+    color: black;
+}
+.activity-box .activity-hover:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.comment-box:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.activity-box .reading-icon {
+    background: #77d493;
+}
+
+.comment-summary {
+    width: 100%;
+    text-align: center;
+    color: #666;
+    padding: 15px 0px;
+    margin: 0;
+    display: block;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.reading-title {
+    float: none !important;
+    width: initial !important;
+    text-align: center;
+    padding: 15px;
+}
+.reading-title h1 {
+    line-height: 1.3;
+    margin: 0;
+    font-size: 18px;
+}
+
+.reading-title p {
+    margin: .3em 0;
+    font-size: 16px;
+}
+
+.reply-curve {
+    border-left: #bbc1c7 solid 2.5px;
+    border-bottom: #bbc1c7f5 solid 2.5px;
+    border-bottom-left-radius: 15px;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-left: 13.1px;
+}
+
+.outer-box {
+    background-color: #FA9B5C;
+    box-shadow: 0px 13px 12px 2px #8c8c8c;
+    border-radius: 30px;
+    padding-bottom: 40px;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.logo {
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px;
+    display: block;
+    width: 126px;
+    margin: auto;
+}
+
+.logo:hover {
+    cursor: initial;
+}
+
+.logo img {
+    transition: filter .2s;
+    display: block;
+}
+
+.logo img:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 .1rem #FA9B5C);
+}
+
+.outer-box > p, .greeting p {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+.outro a, .outro p {
+    color: black;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+.greeting p:first-child {
+    font-size: 24px;
+}
+
+.show-btn {
+    background-color: #00a2f5;
+    color: white;
+    text-transform: capitalize;
+    text-decoration: none;
+    width: 300px;
+    height: 25px;
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    margin: auto;
+    transition: background-color .3s;
+    font-weight: 500;
+}
+
+.show-btn:hover {
+    background-color: #028bcf;
+}

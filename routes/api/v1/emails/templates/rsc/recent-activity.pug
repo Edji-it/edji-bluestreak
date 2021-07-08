@@ -1,2 +1,71 @@
-style
-  include recent-activity.css
+
+doctype html
+html 
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="x-apple-disable-message-reformatting")
+    title Edji
+    //- External Styling
+    style
+      include recent-activity.css
+  body 
+    //- Mixins
+    mixin comment(project, comment, index, total)
+      if index < 3
+        a(href=values.vars.baseUrl + "/#/project/" + project._id + "?comment=" + (comment.type === "reply" ? comment.replyTo._id + "&reply=" + comment._id : comment._id))
+          div.comment-box
+            div(style="padding: 20px;")
+              if comment.type === 'reply'
+                p.reply-text(style="")= comment.replyTo.author + ': ' + comment.replyTo.data
+                div(style="height: 5px;border-left:#bbc1c7 solid 2.5px;margin-left:13px;")
+                div.reply-curve
+                .comment-header
+                  p= comment.author.fullname
+                  p= comment.dateString
+              if comment.type === 'comment'
+                .comment-header.no-margin
+                  p= comment.author.fullname
+                  p= comment.dateString
+                p.highlighted-box= comment.text
+              p(style="margin: 0.75em 0;")= comment.data
+          if index + 1 !== total
+            hr
+
+    mixin project(project)
+      .activity-box
+        a(href=values.vars.baseUrl + "/#/project/" + project._id + "?pane=comments")
+          div.activity-title
+            .reading-title
+              .reading-title--center-row
+                h1.small= project.name
+                p= project.group
+          div.activity-hover
+            each val, key in project.comments
+              +comment(project, val, key, project.comments.length)
+            if project.comments.length > 3
+              a.comment-summary(href=values.vars.baseUrl + "/#/dashboard/activity")= (project.comments.length - 3) + ' more new comments found.'
+
+    //- Header
+    div(style="margin-bottom:-20px;height:125px;")
+      a.logo(href="https://edji.it")
+        img(src="https://edji.it/assets/logo/Logomark.png" alt="Edji Logo")
+
+    //- Wrapping box
+    .outer-box
+
+      //- Greeting
+      div.greeting
+        p Greetings #{values.name}!
+        p(style="margin-top: 10px;margin-bottom: 30px;")= `Over the past day, ${values.vars.totalComments} comments were made across ${values.vars.projects.length} different readings.`
+
+      //- Recent Activity
+      .recent-activity-projects
+        each val, key in values.vars.projects
+          +project(val)
+      
+      a.show-btn(href=values.vars.baseUrl + "/#/dashboard/activity") View All Activity
+
+      //- Footer
+      div.outro(style="margin-top: 20px;width: 100%;")
+        a(style="text-decoration: none;text-align:center;font-size: 16px;" href="https://edji.it") &copy; Edji
