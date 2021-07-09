@@ -9,7 +9,7 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: black !important;
 }
 
 p {
@@ -20,12 +20,6 @@ p {
     display: inline-block !important;
     color: #333;
     text-align: left;
-}
-
-@media only screen and (min-width: 1370px) {
-    .outer-box {
-        box-shadow: 3px 3px 4px black;
-    }
 }
 
 .activity-title {
@@ -39,14 +33,13 @@ p {
 }
 
 .activity-box {
-    border: 1px solid #dce3ea;
+    border: 3px solid #dce3ea;
     color: #000;
     font-size: 0.8em;
     margin: 0 auto;
     margin-bottom: 40px !important;
     max-width: 1200px;
     background-color: white;
-    box-shadow: 1px 1px 10px 5px #fccb80;
 }
 .activity-box .reply-text {
     margin: 0;
@@ -146,8 +139,6 @@ p {
 }
 
 .outer-box {
-    background-color: #FA9B5C;
-    box-shadow: 0px 13px 12px 2px #8c8c8c;
     border-radius: 30px;
     padding-bottom: 40px;
     max-width: 1350px;
@@ -156,7 +147,7 @@ p {
 }
 
 .logo {
-    background-color: white;
+    background-color: #fafafa;
     border-radius: 30px;
     padding: 10px;
     display: block;

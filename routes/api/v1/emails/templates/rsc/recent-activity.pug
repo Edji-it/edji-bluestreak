@@ -46,26 +46,27 @@ html
             if project.comments.length > 3
               a.comment-summary(href=values.vars.baseUrl + "/#/dashboard/activity")= (project.comments.length - 3) + ' more new comments found.'
 
-    //- Header
-    div(style="margin-bottom:-20px;height:125px;")
-      a.logo(href="https://edji.it")
-        img(src="https://edji.it/assets/logo/Logomark.png" alt="Edji Logo")
+    div(style="width: 100%;height: 100%;background-color: #fafafa;padding-top:30px;")
+      //- Header
+      div(style="margin-bottom:-20px;height:125px;")
+        a.logo(href="https://edji.it")
+          img(src="https://edji.it/assets/logo/Logomark.png" alt="Edji Logo")
 
-    //- Wrapping box
-    .outer-box
+      //- Wrapping box
+      .outer-box
 
-      //- Greeting
-      div.greeting
-        p Greetings #{values.name}!
-        p(style="margin-top: 10px;margin-bottom: 30px;")= `Over the past day, ${values.vars.totalComments} comments were made across ${values.vars.projects.length} different readings.`
+        //- Greeting
+        div.greeting
+          p Greetings #{values.name}!
+          p(style="margin-top: 10px;margin-bottom: 30px;")= `Over the past day, ${values.vars.totalComments} comments were made across ${values.vars.projects.length} different readings.`
 
-      //- Recent Activity
-      .recent-activity-projects
-        each val, key in values.vars.projects
-          +project(val)
-      
-      a.show-btn(href=values.vars.baseUrl + "/#/dashboard/activity") View All Activity
+        //- Recent Activity
+        .recent-activity-projects
+          each val, key in values.vars.projects
+            +project(val)
+        
+        a.show-btn(href=values.vars.baseUrl + "/#/dashboard/activity") View All Activity
 
-      //- Footer
-      div.outro(style="margin-top: 20px;width: 100%;")
-        a(style="text-decoration: none;text-align:center;font-size: 16px;" href="https://edji.it") &copy; Edji
+        //- Footer
+        div.outro(style="margin-top: 20px;width: 100%;")
+          a(style="text-decoration: none;text-align:center;font-size: 16px;" href="https://edji.it") &copy; Edji
