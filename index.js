@@ -2,8 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const responseTime = require('response-time') // middleware that adds header with the total elapsed time of call
 const methodOverride = require("method-override")
-const dotenv = require('dotenv').config()
-const CONFIG = require('./config')
+
+// Set up configuration
+require('dotenv').config()
+require('./config')
 
 // set up error logging
 const Sentry = require('@sentry/node')
@@ -17,12 +19,6 @@ let app = express()
 app.use(Sentry.Handlers.requestHandler()) // adds details about errors to sentry
 app.use(responseTime())
 app.use(bodyParser.json({ limit: '20mb' }))
-
-// import routes
-const routes = require('./routes')
-
-// add routes to express
-app.use(routes)
 
 // global error handling
 app.use(methodOverride())
